@@ -1,4 +1,3 @@
-import FreeExperienceGroup from "../sections/main/FreeExperienceGroup";
 import MainSection from "../sections/main/MainSection";
 import ThemeSection from "../sections/main/ThemeSection";
 
@@ -7,7 +6,6 @@ export default function Home() {
         <div>
             <MainSection />
             <ThemeSection />
-            <FreeExperienceGroup />
         </div>
     );
 }

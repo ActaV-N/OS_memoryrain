@@ -3,6 +3,8 @@ import theme from "../../data/theme";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import Link from "next/link";
+import Button from "../../components/Button";
 
 const ThemeListSection = () => {
     const [open, setOpen] = useState(false);
@@ -105,51 +107,100 @@ const ThemeListSection = () => {
     }, [open]);
 
     const handleClickRange = (e) => {
-        console.log(e.target);
-        if (e.target.classList.contains("dim") || e.target.classList.contains("close")) {
+        if (
+            e.target.classList.contains("dim") ||
+            e.target.classList.contains("close")
+        ) {
             handleOpen(false, infoRef.current);
         }
     };
 
     return (
         <>
-            <div className={classNames(styles.modal, "width-setter")} ref={modalRef} onClick={handleClickRange}>
+            <div
+                className={classNames(styles.modal, "width-setter")}
+                ref={modalRef}
+                onClick={handleClickRange}
+            >
                 <div className={classNames(styles.dim, "dim")}></div>
                 <div className={classNames(styles.content, "content")}>
                     {infoRef.current && (
                         <>
                             <div className={classNames(styles.head)}>
                                 <div>{infoRef.current.title}</div>
-                                <div className={classNames(styles.close, "close")}>
+                                <div
+                                    className={classNames(
+                                        styles.close,
+                                        "close"
+                                    )}
+                                >
                                     <i></i>
                                 </div>
                             </div>
-                            <div className={classNames(styles.mobileContainer, "mobile-only")}>
+                            <div
+                                className={classNames(
+                                    styles.mobileContainer,
+                                    "mobile-only"
+                                )}
+                            >
                                 <div className={styles.mobileWrap}>
                                     <div className={styles.imageContainer}>
-                                        <img src={infoRef.current.src} alt={infoRef.current.alt} />
+                                        <img
+                                            src={infoRef.current.src}
+                                            alt={infoRef.current.alt}
+                                        />
                                     </div>
-                                    <div className={styles.descriptionContainer}>{infoRef.current.description}</div>
+                                    <div
+                                        className={styles.descriptionContainer}
+                                    >
+                                        {infoRef.current.description}
+                                    </div>
                                     {infoRef.current.id !== -1 && (
                                         <div className={styles.buttonContainer}>
-                                            <button>예약하기</button>
+                                            <Button
+                                                link={infoRef.current.link}
+                                                target="_blank"
+                                            >
+                                                예약하기
+                                            </Button>
                                         </div>
                                     )}
                                 </div>
                             </div>
-                            <div className={classNames("pc-only", styles.pcContent)}>
+                            <div
+                                className={classNames(
+                                    "pc-only",
+                                    styles.pcContent
+                                )}
+                            >
                                 <div className={styles.pcWrap}>
                                     <div className={styles.pcBook}>
                                         <div className={styles.imageContainer}>
-                                            <img src={infoRef.current.src} alt={infoRef.current.alt} />
+                                            <img
+                                                src={infoRef.current.src}
+                                                alt={infoRef.current.alt}
+                                            />
                                         </div>
                                         {infoRef.current.id !== -1 && (
-                                            <div className={styles.buttonContainer}>
-                                                <button>예약하기</button>
+                                            <div
+                                                className={
+                                                    styles.buttonContainer
+                                                }
+                                            >
+                                                <Button
+                                                    link={infoRef.current.link}
+                                                    target="_blank"
+                                                >
+                                                    예약하기
+                                                </Button>
                                             </div>
                                         )}
                                     </div>
-                                    <div className={styles.descriptionContainer}>{infoRef.current.description}</div>
+                                    <div
+                                        className={styles.descriptionContainer}
+                                    >
+                                        {infoRef.current.description}
+                                    </div>
                                 </div>
                             </div>
                         </>
@@ -158,7 +209,11 @@ const ThemeListSection = () => {
             </div>
             <div className={classNames(styles.container, "width-setter")}>
                 {theme.map((info) => (
-                    <div className={styles.themeItem} key={info.id} onClick={() => handleOpen(true, info)}>
+                    <div
+                        className={styles.themeItem}
+                        key={info.id}
+                        onClick={() => handleOpen(true, info)}
+                    >
                         <div className={styles.posterContainer}>
                             <img src={info.src} alt={info.alt} />
                         </div>

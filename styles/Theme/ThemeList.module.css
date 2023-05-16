@@ -74,6 +74,9 @@
     visibility: hidden;
 
     padding:15px 20px;
+
+    max-height: 90vh;
+    overflow: auto;
 }
 
 .modal .head{
