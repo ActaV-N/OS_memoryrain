@@ -692,11 +692,6 @@ const boardList = [
             </>
         ),
     },
-    {
-        id: 2,
-        title: "테스트 공지3",
-        body: <>테스트 공지사항 입니다34.</>,
-    },
 ];
 
 export default boardList;
